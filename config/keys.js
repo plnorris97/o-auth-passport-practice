@@ -7,5 +7,8 @@ module.exports = {
     },
     mongodb: {
         dbURI: 'mongodb://plnorrisTEST:test1234@ds163044.mlab.com:63044/oauth-users-test'
-        }
+        },
+    session: {
+        cookieKey: 'oauthsessionpractice'
+    }
 };

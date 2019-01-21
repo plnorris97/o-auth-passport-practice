@@ -18,7 +18,17 @@ router.get('/google', passport.authenticate('google', {
 }))
 
 // callback route for google to redirect to
-router.get('/google/redirect', passport.authenticate('google'),  (req, res) => {
+router.get('/google/redirect', passport.authenticate('google'),  (err, req, res) => {
+    if (err.name === 'TokenError') {
+        res.redirect('/auth/google');
+    } else {
+        // handle other errors here
+    }
+    },
+    (req, res) => {
+        req.user
+    // on success, redirect back to '/'
+    res.redirect('/');
     res.send('you reached the redirect URI');
 });
 
